@@ -1,5 +1,7 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel, field_validator, ValidationError
 from typing import List,Optional
 import pandas as pd
@@ -22,6 +24,15 @@ def get_dataset():
     return _dataset
 
 app = FastAPI()
+
+# Add validation error handler
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    exc_str = f'{exc}'.replace('\n', ' ').replace('   ', ' ')
+    logger.error(f"Validation error: {exc_str}")
+    logger.error(f"Request body: {await request.body()}")
+    content = {'detail': exc.errors(), 'body': exc.body}
+    return JSONResponse(content=content, status_code=422)
 
 # Add CORS middleware
 app.add_middleware(
