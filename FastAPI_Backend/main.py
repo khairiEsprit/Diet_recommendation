@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel,conlist
+from pydantic import BaseModel, field_validator
 from typing import List,Optional
 import pandas as pd
 from model import recommend,output_recommended_recipes
@@ -33,9 +33,16 @@ class params(BaseModel):
     return_distance:bool=False
 
 class PredictionIn(BaseModel):
-    nutrition_input:conlist(float, min_items=9, max_items=9)
+    nutrition_input: List[float]
     ingredients:list[str]=[]
-    params:Optional[params]
+    params:Optional[params]=None
+    
+    @field_validator('nutrition_input')
+    @classmethod
+    def validate_nutrition_input(cls, v):
+        if len(v) != 9:
+            raise ValueError('nutrition_input must contain exactly 9 values')
+        return v
 
 
 class Recipe(BaseModel):
@@ -67,7 +74,8 @@ def home():
 @app.post("/predict/",response_model=PredictionOut)
 def update_item(prediction_input:PredictionIn):
     dataset = get_dataset()
-    recommendation_dataframe=recommend(dataset,prediction_input.nutrition_input,prediction_input.ingredients,prediction_input.params.dict())
+    params_dict = prediction_input.params.dict() if prediction_input.params else {"n_neighbors": 5, "return_distance": False}
+    recommendation_dataframe=recommend(dataset,prediction_input.nutrition_input,prediction_input.ingredients,params_dict)
     output=output_recommended_recipes(recommendation_dataframe)
     if output is None:
         return {"output":None}
