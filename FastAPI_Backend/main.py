@@ -2,8 +2,8 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel, field_validator, ValidationError
-from typing import List,Optional
+from pydantic import BaseModel, field_validator, ValidationError, Field
+from typing import List, Optional, Union
 import pandas as pd
 from model import recommend,output_recommended_recipes
 import os
@@ -62,21 +62,25 @@ class PredictionIn(BaseModel):
 
 
 class Recipe(BaseModel):
-    Name:str
-    CookTime:str
-    PrepTime:str
-    TotalTime:str
-    RecipeIngredientParts:list[str]
-    Calories:float
-    FatContent:float
-    SaturatedFatContent:float
-    CholesterolContent:float
-    SodiumContent:float
-    CarbohydrateContent:float
-    FiberContent:float
-    SugarContent:float
-    ProteinContent:float
-    RecipeInstructions:list[str]
+    Name: str
+    CookTime: Union[str, int, float]
+    PrepTime: Union[str, int, float]
+    TotalTime: Union[str, int, float]
+    RecipeIngredientParts: List[str]
+    Calories: float
+    FatContent: float
+    SaturatedFatContent: float
+    CholesterolContent: float
+    SodiumContent: float
+    CarbohydrateContent: float
+    FiberContent: float
+    SugarContent: float
+    ProteinContent: float
+    RecipeInstructions: List[str]
+    
+    class Config:
+        # Allow Pydantic v2 to coerce types
+        arbitrary_types_allowed = True
 
 class PredictionOut(BaseModel):
     output: Optional[List[Recipe]] = None
