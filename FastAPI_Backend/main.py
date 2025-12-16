@@ -1,10 +1,15 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, field_validator, ValidationError
 from typing import List,Optional
 import pandas as pd
 from model import recommend,output_recommended_recipes
 import os
+import logging
+
+# Set up logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # Lazy load dataset to reduce memory usage
 _dataset = None
@@ -78,9 +83,21 @@ def home():
     return {"health_check": "OK"}
 
 
+@app.post("/test-payload/")
+async def test_payload(data: dict):
+    """Test endpoint to see what data is being sent"""
+    logger.info(f"Received payload: {data}")
+    return {"received": data}
+
+
 @app.post("/predict/",response_model=PredictionOut)
-def update_item(prediction_input:PredictionIn):
+async def update_item(prediction_input:PredictionIn):
     try:
+        logger.info(f"Received request with nutrition_input length: {len(prediction_input.nutrition_input)}")
+        logger.info(f"Nutrition values: {prediction_input.nutrition_input}")
+        logger.info(f"Ingredients: {prediction_input.ingredients}")
+        logger.info(f"Params: {prediction_input.params}")
+        
         dataset = get_dataset()
         params_dict = prediction_input.params.model_dump() if prediction_input.params else {"n_neighbors": 5, "return_distance": False}
         recommendation_dataframe=recommend(dataset,prediction_input.nutrition_input,prediction_input.ingredients,params_dict)
@@ -90,8 +107,8 @@ def update_item(prediction_input:PredictionIn):
         else:
             return {"output":output}
     except Exception as e:
-        print(f"Error in predict endpoint: {str(e)}")
-        raise
+        logger.error(f"Error in predict endpoint: {str(e)}", exc_info=True)
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 if __name__ == "__main__":
