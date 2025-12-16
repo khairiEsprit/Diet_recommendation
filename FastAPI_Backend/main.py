@@ -48,13 +48,6 @@ class PredictionIn(BaseModel):
         if len(v) != 9:
             raise ValueError(f'nutrition_input must contain exactly 9 values, got {len(v)}')
         return v
-    
-    @field_validator('params', mode='before')
-    @classmethod
-    def set_default_params(cls, v):
-        if v is None:
-            return params(n_neighbors=5, return_distance=False)
-        return v
 
 
 class Recipe(BaseModel):
