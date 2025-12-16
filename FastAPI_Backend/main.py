@@ -12,7 +12,7 @@ _dataset = None
 def get_dataset():
     global _dataset
     if _dataset is None:
-        dataset_path = os.path.join(os.path.dirname(__file__), '..', 'Data', 'dataset.csv')
+        dataset_path = os.path.join(os.path.dirname(__file__), '..', 'Data', 'dataset_reduced.csv')
         _dataset = pd.read_csv(dataset_path, compression='gzip')
     return _dataset
 
