@@ -109,13 +109,14 @@ const Navbar = () => {
               noWrap
               component="div"
               sx={{
-                display: { xs: "none", md: "flex" },
+                display: "flex",
                 fontWeight: 800,
                 background: "linear-gradient(135deg, #ffffff 0%, #667eea 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
                 letterSpacing: ".05rem",
+                fontSize: { xs: "1.25rem", md: "1.5rem" },
               }}
             >
               HealthyWay
