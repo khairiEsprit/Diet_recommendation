@@ -44,14 +44,14 @@ app.add_middleware(
 )
 
 
-class params(BaseModel):
-    n_neighbors:int=5
-    return_distance:bool=False
+class Params(BaseModel):
+    n_neighbors: int = 5
+    return_distance: bool = False
 
 class PredictionIn(BaseModel):
     nutrition_input: List[float]
     ingredients: List[str] = []
-    params: Optional[params] = None
+    params: Optional[Params] = None
     
     @field_validator('nutrition_input')
     @classmethod
