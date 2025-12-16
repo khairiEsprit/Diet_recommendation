@@ -4,9 +4,17 @@ from pydantic import BaseModel,conlist
 from typing import List,Optional
 import pandas as pd
 from model import recommend,output_recommended_recipes
+import os
 
+# Lazy load dataset to reduce memory usage
+_dataset = None
 
-dataset=pd.read_csv('../Data/dataset.csv',compression='gzip')
+def get_dataset():
+    global _dataset
+    if _dataset is None:
+        dataset_path = os.path.join(os.path.dirname(__file__), '..', 'Data', 'dataset.csv')
+        _dataset = pd.read_csv(dataset_path, compression='gzip')
+    return _dataset
 
 app = FastAPI()
 
@@ -58,6 +66,7 @@ def home():
 
 @app.post("/predict/",response_model=PredictionOut)
 def update_item(prediction_input:PredictionIn):
+    dataset = get_dataset()
     recommendation_dataframe=recommend(dataset,prediction_input.nutrition_input,prediction_input.ingredients,prediction_input.params.dict())
     output=output_recommended_recipes(recommendation_dataframe)
     if output is None:
