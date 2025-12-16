@@ -119,23 +119,47 @@ const Home = () => {
         <Fade in={showContent} timeout={1000}>
           <Box sx={{ textAlign: "center", mb: 12, mt: { xs: 4, md: 8 } }}>
             {/* Badge */}
-            <Chip
-              icon={
-                <StarIcon sx={{ fontSize: 16, color: "#ffd700 !important" }} />
-              }
-              label="AI-Powered Nutrition Platform"
+            <Box
               sx={{
+                display: "flex",
+                gap: 2,
+                justifyContent: "center",
+                flexWrap: "wrap",
                 mb: 3,
-                background: "rgba(255, 255, 255, 0.1)",
-                backdropFilter: "blur(10px)",
-                border: "1px solid rgba(255, 255, 255, 0.2)",
-                color: "white",
-                fontWeight: 600,
-                fontSize: "0.9rem",
-                px: 2,
-                py: 0.5,
               }}
-            />
+            >
+              <Chip
+                icon={
+                  <StarIcon
+                    sx={{ fontSize: 16, color: "#ffd700 !important" }}
+                  />
+                }
+                label="#1 AI-Powered Nutrition Platform"
+                sx={{
+                  background: "rgba(255, 255, 255, 0.1)",
+                  backdropFilter: "blur(10px)",
+                  border: "1px solid rgba(255, 255, 255, 0.2)",
+                  color: "white",
+                  fontWeight: 600,
+                  fontSize: "0.9rem",
+                  px: 2,
+                  py: 0.5,
+                }}
+              />
+              <Chip
+                label="🎉 50K+ Happy Users"
+                sx={{
+                  background: "rgba(67, 233, 123, 0.15)",
+                  backdropFilter: "blur(10px)",
+                  border: "1px solid rgba(67, 233, 123, 0.3)",
+                  color: "white",
+                  fontWeight: 600,
+                  fontSize: "0.9rem",
+                  px: 2,
+                  py: 0.5,
+                }}
+              />
+            </Box>
 
             {/* Main Heading */}
             <Typography
@@ -152,27 +176,86 @@ const Home = () => {
                 lineHeight: 1.2,
               }}
             >
-              Transform Your
+              Your Journey to
               <br />
-              Eating Habits
+              Better Health Starts Here
             </Typography>
 
             {/* Subheading */}
             <Typography
               variant="h5"
               sx={{
-                color: "rgba(255, 255, 255, 0.7)",
-                mb: 5,
-                maxWidth: 700,
+                color: "rgba(255, 255, 255, 0.8)",
+                mb: 3,
+                maxWidth: 750,
                 mx: "auto",
-                fontSize: { xs: "1.1rem", md: "1.4rem" },
-                lineHeight: 1.6,
+                fontSize: { xs: "1.15rem", md: "1.5rem" },
+                lineHeight: 1.7,
+                fontWeight: 500,
               }}
             >
-              Discover personalized meal plans powered by AI. Achieve your
-              health goals with smart nutrition recommendations tailored just
-              for you.
+              Get personalized meal plans powered by AI in just 2 minutes.
+              <br />
+              <Box
+                component="span"
+                sx={{
+                  color: "#667eea",
+                  fontWeight: 700,
+                }}
+              >
+                100% Free. No Signup Required.
+              </Box>
             </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                gap: 2,
+                justifyContent: "center",
+                alignItems: "center",
+                mb: 5,
+                flexWrap: "wrap",
+              }}
+            >
+              <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+                <CheckCircleOutlineIcon
+                  sx={{ color: "#43e97b", fontSize: 20 }}
+                />
+                <Typography
+                  sx={{
+                    color: "rgba(255, 255, 255, 0.7)",
+                    fontSize: "0.95rem",
+                  }}
+                >
+                  Science-based recommendations
+                </Typography>
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+                <CheckCircleOutlineIcon
+                  sx={{ color: "#43e97b", fontSize: 20 }}
+                />
+                <Typography
+                  sx={{
+                    color: "rgba(255, 255, 255, 0.7)",
+                    fontSize: "0.95rem",
+                  }}
+                >
+                  500K+ verified recipes
+                </Typography>
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+                <CheckCircleOutlineIcon
+                  sx={{ color: "#43e97b", fontSize: 20 }}
+                />
+                <Typography
+                  sx={{
+                    color: "rgba(255, 255, 255, 0.7)",
+                    fontSize: "0.95rem",
+                  }}
+                >
+                  Instant results
+                </Typography>
+              </Box>
+            </Box>
 
             {/* CTA Buttons */}
             <Box
@@ -196,56 +279,85 @@ const Home = () => {
                   background:
                     "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
                   color: "white",
-                  px: { xs: 4, md: 5 },
-                  py: { xs: 1.75, md: 2 },
-                  fontSize: { xs: "1rem", md: "1.1rem" },
+                  px: { xs: 4, md: 6 },
+                  py: { xs: 2, md: 2.5 },
+                  fontSize: { xs: "1.1rem", md: "1.25rem" },
                   fontWeight: 700,
-                  borderRadius: 3,
-                  minHeight: { xs: 48, md: "auto" },
-                  boxShadow: "0 8px 32px rgba(102, 126, 234, 0.4)",
+                  borderRadius: 4,
+                  minHeight: { xs: 56, md: 64 },
+                  boxShadow: "0 8px 32px rgba(102, 126, 234, 0.5)",
                   textTransform: "none",
+                  position: "relative",
+                  overflow: "hidden",
                   "&:hover": {
                     background:
                       "linear-gradient(135deg, #764ba2 0%, #667eea 100%)",
-                    transform: "translateY(-3px)",
-                    boxShadow: "0 12px 48px rgba(102, 126, 234, 0.6)",
+                    transform: "translateY(-4px)",
+                    boxShadow: "0 16px 56px rgba(102, 126, 234, 0.7)",
+                  },
+                  "&::before": {
+                    content: '""',
+                    position: "absolute",
+                    top: 0,
+                    left: "-100%",
+                    width: "100%",
+                    height: "100%",
+                    background:
+                      "linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)",
+                    transition: "left 0.5s ease",
+                  },
+                  "&:hover::before": {
+                    left: "100%",
                   },
                   transition: "all 0.3s ease",
                 }}
               >
-                Get Started Free
+                Start Your Free Plan Now
               </Button>
               <Button
                 variant="outlined"
                 size="large"
-                endIcon={<SearchIcon />}
-                onClick={() => navigate("/custom-recommendation")}
+                endIcon={<ArrowForwardIcon />}
+                onClick={() => navigate("/how-it-works")}
                 fullWidth={true}
                 sx={{
                   borderColor: "rgba(255, 255, 255, 0.3)",
                   borderWidth: 2,
                   color: "white",
-                  px: { xs: 4, md: 5 },
-                  py: { xs: 1.75, md: 2 },
-                  fontSize: { xs: "1rem", md: "1.1rem" },
+                  px: { xs: 4, md: 6 },
+                  py: { xs: 2, md: 2.5 },
+                  fontSize: { xs: "1.1rem", md: "1.25rem" },
                   fontWeight: 700,
-                  borderRadius: 3,
-                  minHeight: { xs: 48, md: "auto" },
+                  borderRadius: 4,
+                  minHeight: { xs: 56, md: 64 },
                   textTransform: "none",
                   backdropFilter: "blur(10px)",
                   background: "rgba(255, 255, 255, 0.05)",
                   "&:hover": {
-                    borderColor: "rgba(255, 255, 255, 0.5)",
+                    borderColor: "#667eea",
                     borderWidth: 2,
-                    background: "rgba(255, 255, 255, 0.1)",
-                    transform: "translateY(-3px)",
+                    background: "rgba(102, 126, 234, 0.15)",
+                    transform: "translateY(-4px)",
                   },
                   transition: "all 0.3s ease",
                 }}
               >
-                Explore Recipes
+                See How It Works
               </Button>
             </Box>
+
+            {/* Trust Line */}
+            <Typography
+              variant="body2"
+              sx={{
+                color: "rgba(255, 255, 255, 0.5)",
+                fontSize: "0.9rem",
+                mb: 6,
+                fontStyle: "italic",
+              }}
+            >
+              ✨ Trusted by 50,000+ users worldwide • No credit card required
+            </Typography>
 
             {/* Stats */}
             <Grid
