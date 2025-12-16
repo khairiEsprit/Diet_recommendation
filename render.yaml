@@ -8,7 +8,7 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.10.0
-  
+
   # Frontend
   - type: web
     name: diet-recommendation-frontend

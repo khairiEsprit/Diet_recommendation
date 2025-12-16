@@ -34,14 +34,21 @@ class params(BaseModel):
 
 class PredictionIn(BaseModel):
     nutrition_input: List[float]
-    ingredients:list[str]=[]
-    params:Optional[params]=None
+    ingredients: List[str] = []
+    params: Optional[params] = None
     
     @field_validator('nutrition_input')
     @classmethod
     def validate_nutrition_input(cls, v):
         if len(v) != 9:
-            raise ValueError('nutrition_input must contain exactly 9 values')
+            raise ValueError(f'nutrition_input must contain exactly 9 values, got {len(v)}')
+        return v
+    
+    @field_validator('params', mode='before')
+    @classmethod
+    def set_default_params(cls, v):
+        if v is None:
+            return params(n_neighbors=5, return_distance=False)
         return v
 
 
@@ -73,14 +80,18 @@ def home():
 
 @app.post("/predict/",response_model=PredictionOut)
 def update_item(prediction_input:PredictionIn):
-    dataset = get_dataset()
-    params_dict = prediction_input.params.dict() if prediction_input.params else {"n_neighbors": 5, "return_distance": False}
-    recommendation_dataframe=recommend(dataset,prediction_input.nutrition_input,prediction_input.ingredients,params_dict)
-    output=output_recommended_recipes(recommendation_dataframe)
-    if output is None:
-        return {"output":None}
-    else:
-        return {"output":output}
+    try:
+        dataset = get_dataset()
+        params_dict = prediction_input.params.model_dump() if prediction_input.params else {"n_neighbors": 5, "return_distance": False}
+        recommendation_dataframe=recommend(dataset,prediction_input.nutrition_input,prediction_input.ingredients,params_dict)
+        output=output_recommended_recipes(recommendation_dataframe)
+        if output is None:
+            return {"output":None}
+        else:
+            return {"output":output}
+    except Exception as e:
+        print(f"Error in predict endpoint: {str(e)}")
+        raise
 
 
 if __name__ == "__main__":

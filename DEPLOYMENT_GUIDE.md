@@ -5,6 +5,7 @@
 ### Option 1: One-Click Deploy with render.yaml
 
 1. **Push your code to GitHub**
+
    - Create a new repository on GitHub
    - Push this project to GitHub
 
@@ -80,16 +81,19 @@
 ## Troubleshooting
 
 **If backend shows errors:**
+
 - Check logs in Render dashboard
 - Ensure all dependencies are in requirements.txt
 - Verify the Data/dataset.csv file is committed to your repository
 
 **If frontend can't connect to backend:**
+
 - Verify `REACT_APP_API_URL` environment variable is set correctly
 - Check CORS settings in backend
 - Ensure backend is running (visit the backend URL directly)
 
 **Free Tier Limitations:**
+
 - Render free tier services spin down after 15 minutes of inactivity
 - First request after inactivity takes 30-50 seconds
 - Consider upgrading for production use
@@ -99,6 +103,7 @@
 ## Local Testing
 
 To test locally:
+
 ```bash
 # Terminal 1 - Backend
 cd FastAPI_Backend
