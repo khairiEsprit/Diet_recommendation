@@ -222,7 +222,7 @@ const CustomRecommendation = () => {
         <Paper
           elevation={0}
           sx={{
-            p: 4,
+            p: { xs: 2, sm: 3, md: 4 },
             borderRadius: 4,
             mb: 4,
             background: "rgba(255, 255, 255, 0.05)",
@@ -230,7 +230,7 @@ const CustomRecommendation = () => {
             border: "1px solid rgba(255, 255, 255, 0.1)",
           }}
         >
-          <Box sx={{ display: "flex", alignItems: "center", mb: 3 }}>
+          <Box sx={{ display: "flex", alignItems: "center", mb: 3, flexDirection: { xs: "column", sm: "row" }, textAlign: { xs: "center", sm: "left" } }}>
             <Box
               sx={{
                 width: 56,
@@ -240,7 +240,8 @@ const CustomRecommendation = () => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                mr: 2,
+                mr: { xs: 0, sm: 2 },
+                mb: { xs: 2, sm: 0 },
               }}
             >
               <SearchIcon sx={{ fontSize: 32, color: "white" }} />
@@ -249,6 +250,7 @@ const CustomRecommendation = () => {
               variant="h4"
               sx={{
                 fontWeight: 700,
+                fontSize: { xs: "1.5rem", sm: "2rem", md: "2.125rem" },
                 background: "linear-gradient(135deg, #ffffff 0%, #667eea 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
@@ -264,7 +266,8 @@ const CustomRecommendation = () => {
             sx={{
               mb: 3,
               color: "rgba(255, 255, 255, 0.7)",
-              fontSize: "1.05rem",
+              fontSize: { xs: "0.95rem", md: "1.05rem" },
+              textAlign: { xs: "center", sm: "left" },
             }}
           >
             Adjust nutritional values and add ingredients to find recipes that
@@ -272,12 +275,12 @@ const CustomRecommendation = () => {
           </Typography>
 
           {/* Nutrition Sliders */}
-          <Grid container spacing={4} sx={{ mb: 4 }}>
+          <Grid container spacing={{ xs: 2, md: 4 }} sx={{ mb: 4 }}>
             {nutritionConfig.map((nutrition) => (
-              <Grid item xs={12} md={6} lg={4} key={nutrition.key}>
+              <Grid item xs={12} sm={6} md={6} lg={4} key={nutrition.key}>
                 <Box
                   sx={{
-                    p: 3,
+                    p: { xs: 2, md: 3 },
                     background: "rgba(255, 255, 255, 0.05)",
                     backdropFilter: "blur(10px)",
                     border: "1px solid rgba(255, 255, 255, 0.1)",
@@ -424,12 +427,13 @@ const CustomRecommendation = () => {
             </Grid>
           </Grid>
 
-          <Box sx={{ display: "flex", gap: 2 }}>
+          <Box sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" }, gap: 2, width: "100%" }}>
             <Button
               variant="contained"
               startIcon={<SearchIcon />}
               onClick={handleSearch}
               disabled={loading}
+              fullWidth={true}
               sx={{
                 background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
                 px: 4,
@@ -438,6 +442,7 @@ const CustomRecommendation = () => {
                 textTransform: "none",
                 fontSize: "1rem",
                 fontWeight: 600,
+                minHeight: { xs: 48, sm: "auto" },
                 boxShadow: "0 8px 24px rgba(102, 126, 234, 0.4)",
                 "&:hover": {
                   background:
@@ -457,6 +462,7 @@ const CustomRecommendation = () => {
             <Button
               variant="outlined"
               onClick={handleReset}
+              fullWidth={true}
               sx={{
                 px: 4,
                 py: 1.5,
@@ -464,6 +470,7 @@ const CustomRecommendation = () => {
                 textTransform: "none",
                 fontSize: "1rem",
                 fontWeight: 600,
+                minHeight: { xs: 48, sm: "auto" },
                 borderColor: "rgba(255, 255, 255, 0.3)",
                 borderWidth: 2,
                 color: "white",
@@ -492,7 +499,7 @@ const CustomRecommendation = () => {
           <Paper
             elevation={0}
             sx={{
-              p: 4,
+              p: { xs: 2, sm: 3, md: 4 },
               borderRadius: 4,
               background: "rgba(255, 255, 255, 0.05)",
               backdropFilter: "blur(20px)",
@@ -502,13 +509,13 @@ const CustomRecommendation = () => {
             <Typography
               variant="h5"
               gutterBottom
-              sx={{ fontWeight: 700, mb: 3, color: "white" }}
+              sx={{ fontWeight: 700, mb: 3, color: "white", fontSize: { xs: "1.25rem", md: "1.5rem" } }}
             >
               Recommended Recipes ({recommendations.length})
             </Typography>
 
             {recommendations.length > 0 ? (
-              <Grid container spacing={3}>
+              <Grid container spacing={{ xs: 2, md: 3 }}>
                 {recommendations.map((recipe, index) => (
                   <Grid item xs={12} sm={6} md={4} key={index}>
                     <RecipeCard recipe={recipe} />

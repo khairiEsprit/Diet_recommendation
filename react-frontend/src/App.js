@@ -40,12 +40,26 @@ const theme = createTheme({
   shape: {
     borderRadius: 8,
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 960,
+      lg: 1280,
+      xl: 1920,
+    },
+  },
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
           textTransform: "none",
           fontWeight: 600,
+          // Better touch targets on mobile
+          minHeight: 44,
+          '@media (max-width: 600px)': {
+            minHeight: 48,
+          },
         },
       },
     },
@@ -53,6 +67,24 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+        },
+      },
+    },
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          // Larger touch targets for mobile
+          '@media (max-width: 600px)': {
+            padding: 12,
+          },
+        },
+      },
+    },
+    MuiTextField: {
+      defaultProps: {
+        // Better mobile input experience
+        InputLabelProps: {
+          shrink: true,
         },
       },
     },

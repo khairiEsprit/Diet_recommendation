@@ -178,10 +178,12 @@ const Home = () => {
             <Box
               sx={{
                 display: "flex",
-                gap: 3,
+                gap: { xs: 2, md: 3 },
                 justifyContent: "center",
-                flexWrap: "wrap",
+                flexDirection: { xs: "column", sm: "row" },
+                alignItems: "stretch",
                 mb: 6,
+                px: { xs: 2, sm: 0 },
               }}
             >
               <Button
@@ -189,15 +191,17 @@ const Home = () => {
                 size="large"
                 endIcon={<RocketLaunchIcon />}
                 onClick={() => navigate("/diet-recommendation")}
+                fullWidth={true}
                 sx={{
                   background:
                     "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
                   color: "white",
-                  px: 5,
-                  py: 2,
-                  fontSize: "1.1rem",
+                  px: { xs: 4, md: 5 },
+                  py: { xs: 1.75, md: 2 },
+                  fontSize: { xs: "1rem", md: "1.1rem" },
                   fontWeight: 700,
                   borderRadius: 3,
+                  minHeight: { xs: 48, md: "auto" },
                   boxShadow: "0 8px 32px rgba(102, 126, 234, 0.4)",
                   textTransform: "none",
                   "&:hover": {
@@ -216,15 +220,17 @@ const Home = () => {
                 size="large"
                 endIcon={<SearchIcon />}
                 onClick={() => navigate("/custom-recommendation")}
+                fullWidth={true}
                 sx={{
                   borderColor: "rgba(255, 255, 255, 0.3)",
                   borderWidth: 2,
                   color: "white",
-                  px: 5,
-                  py: 2,
-                  fontSize: "1.1rem",
+                  px: { xs: 4, md: 5 },
+                  py: { xs: 1.75, md: 2 },
+                  fontSize: { xs: "1rem", md: "1.1rem" },
                   fontWeight: 700,
                   borderRadius: 3,
+                  minHeight: { xs: 48, md: "auto" },
                   textTransform: "none",
                   backdropFilter: "blur(10px)",
                   background: "rgba(255, 255, 255, 0.05)",
@@ -244,7 +250,7 @@ const Home = () => {
             {/* Stats */}
             <Grid
               container
-              spacing={3}
+              spacing={{ xs: 2, md: 3 }}
               justifyContent="center"
               sx={{ maxWidth: 900, mx: "auto" }}
             >
@@ -252,7 +258,7 @@ const Home = () => {
                 <Grid item xs={6} sm={3} key={index}>
                   <Paper
                     sx={{
-                      p: 3,
+                      p: { xs: 2, md: 3 },
                       background: "rgba(255, 255, 255, 0.05)",
                       backdropFilter: "blur(10px)",
                       border: "1px solid rgba(255, 255, 255, 0.1)",
@@ -266,16 +272,16 @@ const Home = () => {
                       },
                     }}
                   >
-                    <Box sx={{ color: "#667eea", mb: 1 }}>{stat.icon}</Box>
+                    <Box sx={{ color: "#667eea", mb: 1, fontSize: { xs: 20, md: 24 } }}>{stat.icon}</Box>
                     <Typography
                       variant="h4"
-                      sx={{ fontWeight: 700, color: "white", mb: 0.5 }}
+                      sx={{ fontWeight: 700, color: "white", mb: 0.5, fontSize: { xs: "1.5rem", md: "2.125rem" } }}
                     >
                       {stat.value}
                     </Typography>
                     <Typography
                       variant="body2"
-                      sx={{ color: "rgba(255, 255, 255, 0.6)" }}
+                      sx={{ color: "rgba(255, 255, 255, 0.6)", fontSize: { xs: "0.75rem", md: "0.875rem" } }}
                     >
                       {stat.label}
                     </Typography>
@@ -298,7 +304,7 @@ const Home = () => {
               color: "white",
             }}
           >
-            Why Choose NutriAI?
+            Why Choose HealthyWay?
           </Typography>
           <Typography
             variant="body1"
@@ -312,7 +318,7 @@ const Home = () => {
             Cutting-edge technology meets personalized nutrition
           </Typography>
 
-          <Grid container spacing={4}>
+          <Grid container spacing={{ xs: 3, md: 4 }}>
             {features.map((feature, index) => (
               <Grid item xs={12} sm={6} md={3} key={index}>
                 <Card
@@ -344,12 +350,12 @@ const Home = () => {
                     },
                   }}
                 >
-                  <CardContent sx={{ p: 4, textAlign: "center" }}>
+                  <CardContent sx={{ p: { xs: 3, md: 4 }, textAlign: "center" }}>
                     <Box
                       className="feature-icon"
                       sx={{
-                        width: 80,
-                        height: 80,
+                        width: { xs: 64, md: 80 },
+                        height: { xs: 64, md: 80 },
                         borderRadius: "50%",
                         background: feature.gradient,
                         display: "flex",
@@ -369,6 +375,7 @@ const Home = () => {
                         fontWeight: 700,
                         mb: 2,
                         color: "white",
+                        fontSize: { xs: "1rem", md: "1.25rem" },
                       }}
                     >
                       {feature.title}
@@ -378,6 +385,7 @@ const Home = () => {
                       sx={{
                         color: "rgba(255, 255, 255, 0.7)",
                         lineHeight: 1.7,
+                        fontSize: { xs: "0.85rem", md: "0.875rem" },
                       }}
                     >
                       {feature.description}
@@ -425,7 +433,7 @@ const Home = () => {
                   lineHeight: 1.8,
                 }}
               >
-                NutriAI combines advanced machine learning with nutritional
+                HealthyWay combines advanced machine learning with nutritional
                 science to create meal plans that fit your lifestyle and help
                 you reach your goals.
               </Typography>
@@ -499,26 +507,31 @@ const Home = () => {
                     width: "100%",
                     height: "100%",
                     borderRadius: 4,
-                    background:
-                      "linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%)",
-                    backdropFilter: "blur(10px)",
-                    border: "2px solid rgba(255, 255, 255, 0.1)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    position: "relative",
                     overflow: "hidden",
+                    position: "relative",
+                    boxShadow: "0 20px 60px rgba(102, 126, 234, 0.3)",
+                    border: "2px solid rgba(255, 255, 255, 0.1)",
+                    "&::after": {
+                      content: '""',
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      background:
+                        "linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%)",
+                      pointerEvents: "none",
+                    },
                   }}
                 >
-                  <FitnessCenterIcon
-                    sx={{
-                      fontSize: 200,
-                      color: "rgba(255, 255, 255, 0.1)",
-                      animation: "pulse 3s ease-in-out infinite",
-                      "@keyframes pulse": {
-                        "0%, 100%": { transform: "scale(1)", opacity: 0.1 },
-                        "50%": { transform: "scale(1.05)", opacity: 0.15 },
-                      },
+                  <img
+                    src="/nutrition-assistant.jpg"
+                    alt="Nutrition Assistant"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      display: "block",
                     }}
                   />
                 </Box>

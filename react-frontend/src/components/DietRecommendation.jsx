@@ -220,7 +220,7 @@ const DietRecommendation = () => {
         <Paper
           elevation={0}
           sx={{
-            p: 4,
+            p: { xs: 2, sm: 3, md: 4 },
             borderRadius: 4,
             mb: 4,
             background: "rgba(255, 255, 255, 0.05)",
@@ -228,7 +228,7 @@ const DietRecommendation = () => {
             border: "1px solid rgba(255, 255, 255, 0.1)",
           }}
         >
-          <Box sx={{ display: "flex", alignItems: "center", mb: 3 }}>
+          <Box sx={{ display: "flex", alignItems: "center", mb: 3, flexDirection: { xs: "column", sm: "row" }, textAlign: { xs: "center", sm: "left" } }}>
             <Box
               sx={{
                 width: 56,
@@ -238,7 +238,8 @@ const DietRecommendation = () => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                mr: 2,
+                mr: { xs: 0, sm: 2 },
+                mb: { xs: 2, sm: 0 },
               }}
             >
               <FitnessCenterIcon sx={{ fontSize: 32, color: "white" }} />
@@ -247,6 +248,7 @@ const DietRecommendation = () => {
               variant="h4"
               sx={{
                 fontWeight: 700,
+                fontSize: { xs: "1.5rem", sm: "2rem", md: "2.125rem" },
                 background: "linear-gradient(135deg, #ffffff 0%, #667eea 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
@@ -463,11 +465,20 @@ const DietRecommendation = () => {
             </Grid>
           </Grid>
 
-          <Box sx={{ mt: 3, display: "flex", gap: 2 }}>
+          <Box 
+            sx={{ 
+              mt: 3, 
+              display: "flex", 
+              flexDirection: { xs: "column", sm: "row" },
+              gap: 2,
+              width: "100%"
+            }}
+          >
             <Button
               variant="contained"
               startIcon={<CalculateIcon />}
               onClick={handleCalculateBMI}
+              fullWidth={true}
               sx={{
                 background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
                 px: 4,
@@ -476,6 +487,7 @@ const DietRecommendation = () => {
                 textTransform: "none",
                 fontSize: "1rem",
                 fontWeight: 600,
+                minHeight: { xs: 48, sm: "auto" },
                 boxShadow: "0 8px 24px rgba(102, 126, 234, 0.4)",
                 "&:hover": {
                   background:
@@ -494,6 +506,7 @@ const DietRecommendation = () => {
                 startIcon={<FitnessCenterIcon />}
                 onClick={handleGenerateRecommendations}
                 disabled={loading}
+                fullWidth={true}
                 sx={{
                   background:
                     "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
@@ -503,6 +516,7 @@ const DietRecommendation = () => {
                   textTransform: "none",
                   fontSize: "1rem",
                   fontWeight: 600,
+                  minHeight: { xs: 48, sm: "auto" },
                   boxShadow: "0 8px 24px rgba(240, 147, 251, 0.4)",
                   "&:hover": {
                     background:
@@ -531,8 +545,8 @@ const DietRecommendation = () => {
 
         {/* BMI Results */}
         {bmiData && (
-          <Grid container spacing={3} sx={{ mb: 4 }}>
-            <Grid item xs={12} md={3}>
+          <Grid container spacing={{ xs: 2, md: 3 }} sx={{ mb: 4 }}>
+            <Grid item xs={6} sm={6} md={3}>
               <Card
                 sx={{
                   textAlign: "center",
@@ -547,9 +561,9 @@ const DietRecommendation = () => {
                   },
                 }}
               >
-                <CardContent>
-                  <Typography variant="h6">BMI</Typography>
-                  <Typography variant="h3" sx={{ fontWeight: 700 }}>
+                <CardContent sx={{ py: { xs: 2, md: 3 }, px: { xs: 1, md: 2 } }}>
+                  <Typography variant="h6" sx={{ fontSize: { xs: "0.9rem", md: "1.25rem" } }}>BMI</Typography>
+                  <Typography variant="h3" sx={{ fontWeight: 700, fontSize: { xs: "1.75rem", md: "3rem" } }}>
                     {bmiData.bmi}
                   </Typography>
                   <Chip
@@ -563,7 +577,7 @@ const DietRecommendation = () => {
                 </CardContent>
               </Card>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid item xs={6} sm={6} md={3}>
               <Card
                 sx={{
                   textAlign: "center",
@@ -578,29 +592,29 @@ const DietRecommendation = () => {
                   },
                 }}
               >
-                <CardContent>
+                <CardContent sx={{ py: { xs: 2, md: 3 }, px: { xs: 1, md: 2 } }}>
                   <Typography
                     variant="h6"
-                    sx={{ color: "rgba(255, 255, 255, 0.7)" }}
+                    sx={{ color: "rgba(255, 255, 255, 0.7)", fontSize: { xs: "0.9rem", md: "1.25rem" } }}
                   >
                     BMR
                   </Typography>
                   <Typography
                     variant="h4"
-                    sx={{ fontWeight: 700, color: "#667eea" }}
+                    sx={{ fontWeight: 700, color: "#667eea", fontSize: { xs: "1.5rem", md: "2.125rem" } }}
                   >
                     {bmiData.bmr}
                   </Typography>
                   <Typography
                     variant="caption"
-                    sx={{ color: "rgba(255, 255, 255, 0.5)" }}
+                    sx={{ color: "rgba(255, 255, 255, 0.5)", fontSize: { xs: "0.65rem", md: "0.75rem" } }}
                   >
                     kcal/day
                   </Typography>
                 </CardContent>
               </Card>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid item xs={6} sm={6} md={3}>
               <Card
                 sx={{
                   textAlign: "center",
@@ -615,29 +629,29 @@ const DietRecommendation = () => {
                   },
                 }}
               >
-                <CardContent>
+                <CardContent sx={{ py: { xs: 2, md: 3 }, px: { xs: 1, md: 2 } }}>
                   <Typography
                     variant="h6"
-                    sx={{ color: "rgba(255, 255, 255, 0.7)" }}
+                    sx={{ color: "rgba(255, 255, 255, 0.7)", fontSize: { xs: "0.9rem", md: "1.25rem" } }}
                   >
                     Maintenance
                   </Typography>
                   <Typography
                     variant="h4"
-                    sx={{ fontWeight: 700, color: "#f093fb" }}
+                    sx={{ fontWeight: 700, color: "#f093fb", fontSize: { xs: "1.5rem", md: "2.125rem" } }}
                   >
                     {bmiData.maintenanceCalories}
                   </Typography>
                   <Typography
                     variant="caption"
-                    sx={{ color: "rgba(255, 255, 255, 0.5)" }}
+                    sx={{ color: "rgba(255, 255, 255, 0.5)", fontSize: { xs: "0.65rem", md: "0.75rem" } }}
                   >
                     kcal/day
                   </Typography>
                 </CardContent>
               </Card>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid item xs={6} sm={6} md={3}>
               <Card
                 sx={{
                   textAlign: "center",
@@ -652,12 +666,12 @@ const DietRecommendation = () => {
                   },
                 }}
               >
-                <CardContent>
-                  <Typography variant="h6">Target Calories</Typography>
-                  <Typography variant="h4" sx={{ fontWeight: 700 }}>
+                <CardContent sx={{ py: { xs: 2, md: 3 }, px: { xs: 1, md: 2 } }}>
+                  <Typography variant="h6" sx={{ fontSize: { xs: "0.9rem", md: "1.25rem" } }}>Target Calories</Typography>
+                  <Typography variant="h4" sx={{ fontWeight: 700, fontSize: { xs: "1.5rem", md: "2.125rem" } }}>
                     {bmiData.targetCalories}
                   </Typography>
-                  <Typography variant="caption">kcal/day</Typography>
+                  <Typography variant="caption" sx={{ fontSize: { xs: "0.65rem", md: "0.75rem" } }}>kcal/day</Typography>
                 </CardContent>
               </Card>
             </Grid>
@@ -669,7 +683,7 @@ const DietRecommendation = () => {
           <Paper
             elevation={0}
             sx={{
-              p: 4,
+              p: { xs: 2, sm: 3, md: 4 },
               borderRadius: 4,
               background: "rgba(255, 255, 255, 0.05)",
               backdropFilter: "blur(20px)",
@@ -691,13 +705,16 @@ const DietRecommendation = () => {
             <Tabs
               value={activeTab}
               onChange={(e, newValue) => setActiveTab(newValue)}
+              variant="scrollable"
+              scrollButtons="auto"
               sx={{
                 mb: 3,
                 "& .MuiTab-root": {
                   color: "rgba(255, 255, 255, 0.6)",
                   textTransform: "none",
-                  fontSize: "1rem",
+                  fontSize: { xs: "0.875rem", md: "1rem" },
                   fontWeight: 600,
+                  minHeight: { xs: 48, md: "auto" },
                 },
                 "& .Mui-selected": {
                   color: "#667eea !important",

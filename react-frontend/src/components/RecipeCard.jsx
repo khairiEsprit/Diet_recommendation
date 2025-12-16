@@ -112,11 +112,17 @@ const RecipeCard = ({ recipe }) => {
           }}
         />
       </Box>
-      <CardContent sx={{ flexGrow: 1, p: 3 }}>
+      <CardContent sx={{ flexGrow: 1, p: { xs: 2, md: 3 } }}>
         <Typography
           variant="h6"
           gutterBottom
-          sx={{ fontWeight: 600, mb: 2, color: "white" }}
+          sx={{ 
+            fontWeight: 600, 
+            mb: 2, 
+            color: "white",
+            fontSize: { xs: "1rem", md: "1.25rem" },
+            lineHeight: 1.3,
+          }}
         >
           {recipe.Name}
         </Typography>
@@ -124,24 +130,26 @@ const RecipeCard = ({ recipe }) => {
         {/* Time Information */}
         <Box sx={{ display: "flex", gap: 1, mb: 2, flexWrap: "wrap" }}>
           <Chip
-            icon={<TimerIcon sx={{ color: "#667eea !important" }} />}
+            icon={<TimerIcon sx={{ color: "#667eea !important", fontSize: { xs: 14, md: 16 } }} />}
             label={`Prep: ${recipe.PrepTime}min`}
             size="small"
             sx={{
               borderColor: "#667eea",
               color: "white",
               background: "rgba(102, 126, 234, 0.1)",
+              fontSize: { xs: "0.7rem", md: "0.8125rem" },
             }}
             variant="outlined"
           />
           <Chip
-            icon={<TimerIcon sx={{ color: "#f093fb !important" }} />}
+            icon={<TimerIcon sx={{ color: "#f093fb !important", fontSize: { xs: 14, md: 16 } }} />}
             label={`Cook: ${recipe.CookTime}min`}
             size="small"
             sx={{
               borderColor: "#f093fb",
               color: "white",
               background: "rgba(240, 147, 251, 0.1)",
+              fontSize: { xs: "0.7rem", md: "0.8125rem" },
             }}
             variant="outlined"
           />
@@ -151,6 +159,7 @@ const RecipeCard = ({ recipe }) => {
             sx={{
               backgroundColor: "rgba(255, 255, 255, 0.1)",
               color: "white",
+              fontSize: { xs: "0.7rem", md: "0.8125rem" },
             }}
           />
         </Box>
@@ -166,6 +175,7 @@ const RecipeCard = ({ recipe }) => {
                 backgroundColor: item.color,
                 color: "white",
                 fontWeight: 500,
+                fontSize: { xs: "0.7rem", md: "0.8125rem" },
               }}
             />
           ))}
@@ -180,7 +190,10 @@ const RecipeCard = ({ recipe }) => {
         >
           <Typography
             variant="body2"
-            sx={{ color: "rgba(255, 255, 255, 0.6)" }}
+            sx={{ 
+              color: "rgba(255, 255, 255, 0.6)",
+              fontSize: { xs: "0.8rem", md: "0.875rem" },
+            }}
           >
             Click to see details
           </Typography>
@@ -189,9 +202,12 @@ const RecipeCard = ({ recipe }) => {
             onClick={handleExpandClick}
             aria-expanded={expanded}
             aria-label="show more"
-            sx={{ color: "white" }}
+            sx={{ 
+              color: "white",
+              padding: { xs: 1.5, md: 1 },
+            }}
           >
-            <ExpandMoreIcon />
+            <ExpandMoreIcon sx={{ fontSize: { xs: 28, md: 24 } }} />
           </ExpandMore>
         </Box>
 
@@ -202,16 +218,16 @@ const RecipeCard = ({ recipe }) => {
           <Typography
             variant="subtitle2"
             gutterBottom
-            sx={{ fontWeight: 600, mb: 2, color: "white" }}
+            sx={{ fontWeight: 600, mb: 2, color: "white", fontSize: { xs: "0.9rem", md: "0.875rem" } }}
           >
             Nutritional Information
           </Typography>
-          <Grid container spacing={1} sx={{ mb: 3 }}>
+          <Grid container spacing={{ xs: 0.5, md: 1 }} sx={{ mb: 3 }}>
             {nutritionValues.map((item) => (
-              <Grid item xs={6} key={item.label}>
+              <Grid item xs={6} sm={4} key={item.label}>
                 <Box
                   sx={{
-                    p: 1.5,
+                    p: { xs: 1, md: 1.5 },
                     background: "rgba(255, 255, 255, 0.05)",
                     border: "1px solid rgba(255, 255, 255, 0.1)",
                     borderRadius: 2,
@@ -224,13 +240,20 @@ const RecipeCard = ({ recipe }) => {
                 >
                   <Typography
                     variant="caption"
-                    sx={{ color: "rgba(255, 255, 255, 0.6)" }}
+                    sx={{ 
+                      color: "rgba(255, 255, 255, 0.6)",
+                      fontSize: { xs: "0.65rem", md: "0.75rem" },
+                    }}
                   >
                     {item.label}
                   </Typography>
                   <Typography
                     variant="body2"
-                    sx={{ fontWeight: 600, color: "white" }}
+                    sx={{ 
+                      fontWeight: 600, 
+                      color: "white",
+                      fontSize: { xs: "0.8rem", md: "0.875rem" },
+                    }}
                   >
                     {Math.round(item.value)}
                     {item.unit}
@@ -244,11 +267,11 @@ const RecipeCard = ({ recipe }) => {
           <Typography
             variant="subtitle2"
             gutterBottom
-            sx={{ fontWeight: 600, mb: 1, color: "white" }}
+            sx={{ fontWeight: 600, mb: 1, color: "white", fontSize: { xs: "0.9rem", md: "0.875rem" } }}
           >
             <RestaurantIcon
               sx={{
-                fontSize: 18,
+                fontSize: { xs: 16, md: 18 },
                 verticalAlign: "middle",
                 mr: 0.5,
                 color: "#667eea",
@@ -262,7 +285,13 @@ const RecipeCard = ({ recipe }) => {
                 <Typography
                   key={index}
                   variant="body2"
-                  sx={{ ml: 2, mb: 0.5, color: "rgba(255, 255, 255, 0.8)" }}
+                  sx={{ 
+                    ml: 2, 
+                    mb: 0.5, 
+                    color: "rgba(255, 255, 255, 0.8)",
+                    fontSize: { xs: "0.8rem", md: "0.875rem" },
+                    lineHeight: 1.5,
+                  }}
                 >
                   • {ingredient}
                 </Typography>
@@ -273,7 +302,7 @@ const RecipeCard = ({ recipe }) => {
           <Typography
             variant="subtitle2"
             gutterBottom
-            sx={{ fontWeight: 600, mb: 1, color: "white" }}
+            sx={{ fontWeight: 600, mb: 1, color: "white", fontSize: { xs: "0.9rem", md: "0.875rem" } }}
           >
             Instructions
           </Typography>
@@ -283,7 +312,13 @@ const RecipeCard = ({ recipe }) => {
                 <Typography
                   key={index}
                   variant="body2"
-                  sx={{ ml: 2, mb: 1, color: "rgba(255, 255, 255, 0.8)" }}
+                  sx={{ 
+                    ml: 2, 
+                    mb: 1, 
+                    color: "rgba(255, 255, 255, 0.8)",
+                    fontSize: { xs: "0.8rem", md: "0.875rem" },
+                    lineHeight: 1.6,
+                  }}
                 >
                   {index + 1}. {instruction}
                 </Typography>
