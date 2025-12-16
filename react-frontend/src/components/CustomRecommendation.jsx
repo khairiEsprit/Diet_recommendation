@@ -230,7 +230,15 @@ const CustomRecommendation = () => {
             border: "1px solid rgba(255, 255, 255, 0.1)",
           }}
         >
-          <Box sx={{ display: "flex", alignItems: "center", mb: 3, flexDirection: { xs: "column", sm: "row" }, textAlign: { xs: "center", sm: "left" } }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              mb: 3,
+              flexDirection: { xs: "column", sm: "row" },
+              textAlign: { xs: "center", sm: "left" },
+            }}
+          >
             <Box
               sx={{
                 width: 56,
@@ -427,7 +435,14 @@ const CustomRecommendation = () => {
             </Grid>
           </Grid>
 
-          <Box sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" }, gap: 2, width: "100%" }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", sm: "row" },
+              gap: 2,
+              width: "100%",
+            }}
+          >
             <Button
               variant="contained"
               startIcon={<SearchIcon />}
@@ -509,7 +524,12 @@ const CustomRecommendation = () => {
             <Typography
               variant="h5"
               gutterBottom
-              sx={{ fontWeight: 700, mb: 3, color: "white", fontSize: { xs: "1.25rem", md: "1.5rem" } }}
+              sx={{
+                fontWeight: 700,
+                mb: 3,
+                color: "white",
+                fontSize: { xs: "1.25rem", md: "1.5rem" },
+              }}
             >
               Recommended Recipes ({recommendations.length})
             </Typography>

@@ -6,6 +6,11 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import DietRecommendation from "./components/DietRecommendation";
 import CustomRecommendation from "./components/CustomRecommendation";
+import About from "./components/About";
+import HowItWorks from "./components/HowItWorks";
+import FAQ from "./components/FAQ";
+import Testimonials from "./components/Testimonials";
+import Footer from "./components/Footer";
 
 const theme = createTheme({
   palette: {
@@ -57,7 +62,7 @@ const theme = createTheme({
           fontWeight: 600,
           // Better touch targets on mobile
           minHeight: 44,
-          '@media (max-width: 600px)': {
+          "@media (max-width: 600px)": {
             minHeight: 48,
           },
         },
@@ -74,7 +79,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           // Larger touch targets for mobile
-          '@media (max-width: 600px)': {
+          "@media (max-width: 600px)": {
             padding: 12,
           },
         },
@@ -104,7 +109,12 @@ function App() {
             path="/custom-recommendation"
             element={<CustomRecommendation />}
           />
+          <Route path="/about" element={<About />} />
+          <Route path="/how-it-works" element={<HowItWorks />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/testimonials" element={<Testimonials />} />
         </Routes>
+        <Footer />
       </Router>
     </ThemeProvider>
   );

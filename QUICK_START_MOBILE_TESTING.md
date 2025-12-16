@@ -14,6 +14,7 @@ The app will open at `http://localhost:3000`
 ### 2️⃣ Test on Your Mobile Device
 
 #### Option A: Same Network (Easiest)
+
 1. Make sure your phone and computer are on the same WiFi
 2. Find your computer's IP address:
    - Windows: Open Command Prompt → `ipconfig` → Look for IPv4 Address
@@ -23,20 +24,25 @@ The app will open at `http://localhost:3000`
    - Example: `http://192.168.1.100:3000`
 
 #### Option B: Browser DevTools
+
 1. Open Chrome DevTools (F12)
 2. Click the device toolbar icon (or Ctrl+Shift+M)
 3. Select a mobile device from dropdown
 4. Test various screen sizes
 
 #### Option C: Browser Responsive Mode
+
 **Chrome**:
+
 - F12 → Toggle device toolbar (Ctrl+Shift+M)
 - Select device or set custom dimensions
 
 **Firefox**:
+
 - F12 → Responsive Design Mode (Ctrl+Shift+M)
 
 **Safari**:
+
 - Develop menu → Enter Responsive Design Mode
 
 ---
@@ -44,18 +50,21 @@ The app will open at `http://localhost:3000`
 ## 📱 Quick Mobile Test Flow
 
 ### Test #1: Homepage (30 seconds)
+
 1. ✅ Open homepage on mobile
 2. ✅ Scroll through hero section
 3. ✅ Tap "Get Started Free" button
 4. ✅ Verify navigation works
 
 ### Test #2: Navigation (30 seconds)
+
 1. ✅ Tap hamburger menu (top right)
 2. ✅ Menu slides in from right
 3. ✅ Tap each navigation item
 4. ✅ Verify menu closes after selection
 
 ### Test #3: Diet Recommendation Form (1 minute)
+
 1. ✅ Navigate to "Diet Plan"
 2. ✅ Fill out form (age, height, weight, gender)
 3. ✅ Select activity level and goal
@@ -66,6 +75,7 @@ The app will open at `http://localhost:3000`
 8. ✅ Tap a recipe card to expand
 
 ### Test #4: Custom Search (1 minute)
+
 1. ✅ Navigate to "Custom Search"
 2. ✅ Adjust 2-3 nutrition sliders
 3. ✅ Enter ingredients: "chicken; tomato"
@@ -79,6 +89,7 @@ The app will open at `http://localhost:3000`
 ## 🔍 What to Look For
 
 ### ✅ Good Signs
+
 - No horizontal scrolling
 - All buttons are easily tappable (not too small)
 - Text is readable without zooming
@@ -89,6 +100,7 @@ The app will open at `http://localhost:3000`
 - Images load properly
 
 ### ❌ Red Flags
+
 - Need to scroll horizontally
 - Buttons too small to tap
 - Text too small to read
@@ -102,18 +114,21 @@ The app will open at `http://localhost:3000`
 ## 📊 Test Different Scenarios
 
 ### Portrait Mode
+
 ```
 Width: 375px - 430px
 Common for: iPhone, Samsung Galaxy
 ```
 
 ### Landscape Mode
+
 ```
-Width: 667px - 926px  
+Width: 667px - 926px
 Common for: Phone turned sideways
 ```
 
 ### Tablet
+
 ```
 Width: 768px - 1024px
 Common for: iPad, Android tablets
@@ -124,11 +139,13 @@ Common for: iPad, Android tablets
 ## 🎯 Priority Test Devices
 
 ### High Priority (Most Common)
+
 1. **iPhone 12/13/14** (390px width)
 2. **Samsung Galaxy S21** (360px width)
 3. **iPhone SE** (375px width)
 
 ### Medium Priority
+
 4. **iPhone Pro Max** (428px width)
 5. **iPad** (768px width)
 6. **iPad Pro** (1024px width)
@@ -138,6 +155,7 @@ Common for: iPad, Android tablets
 ## 🐛 Found a Bug?
 
 ### How to Report
+
 1. **Screenshot**: Take a screenshot of the issue
 2. **Device**: Note your device/browser (e.g., "iPhone 13, Safari")
 3. **Screen Size**: Note the viewport width (shown in DevTools)
@@ -146,6 +164,7 @@ Common for: iPad, Android tablets
 6. **Actual**: What actually happened
 
 ### Example Bug Report
+
 ```
 Device: iPhone 13 Pro, Safari
 Screen: 390px width
@@ -165,6 +184,7 @@ Actual: Cards overlap and text is unreadable
 ## ⚡ Performance Testing
 
 ### Test Load Speed
+
 1. Open Chrome DevTools
 2. Go to Network tab
 3. Set throttling to "Slow 3G"
@@ -172,6 +192,7 @@ Actual: Cards overlap and text is unreadable
 5. Note load time (should be < 5 seconds)
 
 ### Test Interactions
+
 - Buttons should respond in < 100ms
 - Animations should be smooth (60fps)
 - Scrolling should be buttery smooth
@@ -213,18 +234,21 @@ Your mobile optimization is successful when:
 ## 💡 Pro Tips
 
 ### Chrome DevTools Tips
+
 - **Ctrl+Shift+M**: Toggle device toolbar
 - **Shift+Drag**: Resize viewport
 - **Rotate icon**: Switch portrait/landscape
 - **Network tab**: Throttle to test on slow connections
 
 ### Testing Shortcuts
+
 - Test most common screen sizes first (375px, 390px)
 - Use real devices for final verification
 - Test with actual mobile data speed
 - Have someone else test (fresh perspective)
 
 ### Common Mistakes to Avoid
+
 - ❌ Only testing on desktop browser
 - ❌ Not testing landscape mode
 - ❌ Skipping real device testing

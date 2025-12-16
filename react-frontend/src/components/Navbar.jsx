@@ -23,6 +23,10 @@ import SearchIcon from "@mui/icons-material/Search";
 import HomeIcon from "@mui/icons-material/Home";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import InfoIcon from "@mui/icons-material/Info";
+import HelpIcon from "@mui/icons-material/Help";
+import StarIcon from "@mui/icons-material/Star";
+import BuildIcon from "@mui/icons-material/Build";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -52,6 +56,10 @@ const Navbar = () => {
       path: "/custom-recommendation",
       icon: <SearchIcon />,
     },
+    { label: "How It Works", path: "/how-it-works", icon: <BuildIcon /> },
+    { label: "About", path: "/about", icon: <InfoIcon /> },
+    { label: "Testimonials", path: "/testimonials", icon: <StarIcon /> },
+    { label: "FAQ", path: "/faq", icon: <HelpIcon /> },
   ];
 
   return (
@@ -85,14 +93,14 @@ const Navbar = () => {
                 border: "2px solid rgba(102, 126, 234, 0.3)",
               }}
             >
-              <img 
-                src="/logo.png" 
-                alt="HealthyWay Logo" 
-                style={{ 
-                  width: '100%', 
-                  height: '100%', 
-                  objectFit: 'cover',
-                  borderRadius: '50%'
+              <img
+                src="/logo.png"
+                alt="HealthyWay Logo"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  borderRadius: "50%",
                 }}
               />
             </Box>
@@ -103,8 +111,7 @@ const Navbar = () => {
               sx={{
                 display: { xs: "none", md: "flex" },
                 fontWeight: 800,
-                background:
-                  "linear-gradient(135deg, #ffffff 0%, #667eea 100%)",
+                background: "linear-gradient(135deg, #ffffff 0%, #667eea 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -116,7 +123,14 @@ const Navbar = () => {
           </Box>
 
           {/* Desktop Navigation */}
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, justifyContent: "center", gap: 1 }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
+              justifyContent: "center",
+              gap: 1,
+            }}
+          >
             {navItems.map((item) => (
               <Button
                 key={item.path}
@@ -154,7 +168,13 @@ const Navbar = () => {
           </Box>
 
           {/* Mobile Menu Toggle */}
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" }, justifyContent: "flex-end" }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "flex", md: "none" },
+              justifyContent: "flex-end",
+            }}
+          >
             <IconButton
               onClick={toggleMobileMenu}
               sx={{
@@ -187,7 +207,14 @@ const Navbar = () => {
           },
         }}
       >
-        <Box sx={{ p: 2, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <Box
+          sx={{
+            p: 2,
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
           <Typography
             variant="h6"
             sx={{

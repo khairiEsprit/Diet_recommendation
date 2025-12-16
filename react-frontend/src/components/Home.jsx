@@ -272,16 +272,32 @@ const Home = () => {
                       },
                     }}
                   >
-                    <Box sx={{ color: "#667eea", mb: 1, fontSize: { xs: 20, md: 24 } }}>{stat.icon}</Box>
+                    <Box
+                      sx={{
+                        color: "#667eea",
+                        mb: 1,
+                        fontSize: { xs: 20, md: 24 },
+                      }}
+                    >
+                      {stat.icon}
+                    </Box>
                     <Typography
                       variant="h4"
-                      sx={{ fontWeight: 700, color: "white", mb: 0.5, fontSize: { xs: "1.5rem", md: "2.125rem" } }}
+                      sx={{
+                        fontWeight: 700,
+                        color: "white",
+                        mb: 0.5,
+                        fontSize: { xs: "1.5rem", md: "2.125rem" },
+                      }}
                     >
                       {stat.value}
                     </Typography>
                     <Typography
                       variant="body2"
-                      sx={{ color: "rgba(255, 255, 255, 0.6)", fontSize: { xs: "0.75rem", md: "0.875rem" } }}
+                      sx={{
+                        color: "rgba(255, 255, 255, 0.6)",
+                        fontSize: { xs: "0.75rem", md: "0.875rem" },
+                      }}
                     >
                       {stat.label}
                     </Typography>
@@ -350,7 +366,9 @@ const Home = () => {
                     },
                   }}
                 >
-                  <CardContent sx={{ p: { xs: 3, md: 4 }, textAlign: "center" }}>
+                  <CardContent
+                    sx={{ p: { xs: 3, md: 4 }, textAlign: "center" }}
+                  >
                     <Box
                       className="feature-icon"
                       sx={{
